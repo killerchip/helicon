@@ -4,22 +4,42 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "node_modules/.bin/eslint . --ext .js,.jsx",
+    "pretty": "node_modules/.bin/prettier './**/*.{js,jsx,scss}'",
+    "pretty:write": "node_modules/.bin/prettier --write './**/*.{js,jsx,scss}'"
   },
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.57.8"
   },
   "devDependencies": {
+    "@meteorjs/eslint-config-meteor": "^1.0.5",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.6.0",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-meteor": "^5.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
+    "prettier": "1.15.3",
     "react-test-renderer": "16.6.3"
   },
   "jest": {
     "preset": "react-native",
     "transform": {
       "^.+\\.(js)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits --no-verify"
     }
   }
 }
