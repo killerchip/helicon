@@ -107,6 +107,16 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            //if (project.hasProperty('HELICON_RELEASE_STORE_FILE')) {
+                storeFile file("helicon.keystore")
+                storePassword ";6ga4W4n2kKU_492"
+                keyAlias "helicon.keystore"
+                keyPassword ";6ga4W4n2kKU_492"
+            //}
+        }
+    }
     splits {
         abi {
             reset()
@@ -119,6 +129,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
