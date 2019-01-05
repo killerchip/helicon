@@ -8,6 +8,11 @@
         "meteor": true
     },
     "plugins": ["prettier"],
+    "globals": {
+        "describe": true,
+        "test": true,
+        "expect": true
+    },
     "rules": {
         "prettier/prettier": "error",
         "indent": [
