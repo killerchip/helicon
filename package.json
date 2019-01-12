@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-navigation": "2.18.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "simpl-schema": "^1.5.3",
