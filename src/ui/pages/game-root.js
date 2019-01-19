@@ -25,7 +25,7 @@ const pageStyle = StyleSheet.create({
 // eslint-disable-next-line react/prefer-stateless-function
 export class GameRootPageContent extends React.Component {
     render() {
-        const { ui } = this.props;
+        const { ui, dispatchAction } = this.props;
 
         return (
             <ImageBackground
@@ -33,7 +33,13 @@ export class GameRootPageContent extends React.Component {
                 style={[{ width: '100%', height: '100%' }, pageStyle.page]}
             >
                 <ScrollView style={pageStyle.pageContent}>
-                    {ui.image ? <GridImage image={ui.image} /> : null}
+                    {ui.image ? (
+                        <GridImage
+                            image={ui.image}
+                            grid={ui.grid}
+                            onGridClick={dispatchAction}
+                        />
+                    ) : null}
 
                     <Title title={ui.title} />
                     <Description description={ui.description} />
@@ -45,7 +51,8 @@ export class GameRootPageContent extends React.Component {
 
 GameRootPageContent.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
-    ui: PropTypes.object.isRequired
+    ui: PropTypes.object.isRequired,
+    dispatchAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -53,4 +60,11 @@ const mapStateToProps = state => ({
     ui: mapStateToRoom(state)
 });
 
-export const GameRootPage = connect(mapStateToProps)(GameRootPageContent);
+const mapDispatchToProps = dispatch => ({
+    dispatchAction: action => dispatch(action)
+});
+
+export const GameRootPage = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(GameRootPageContent);

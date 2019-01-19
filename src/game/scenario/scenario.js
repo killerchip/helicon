@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
 import { ElemTypes } from '../../engine/elem-types.js';
 import { images } from '../images';
+import { CellContentTypes } from '../../engine/cell-content-types.js';
 
 export const scenario = {
     hero: {
         locationId: 'towards-earth'
     },
     camera: {
-        roomId: 'intro1',
+        roomId: 'towards-earth',
         objectId: null
     },
     elements: [
@@ -39,7 +40,16 @@ export const scenario = {
             elemType: ElemTypes.ROOM,
             description:
                 'You are in the control room of your space shuttle. Ahead of you can see planet earth welcoming you back home. Just a tap on the navigation screen, and you can set the shuttle in orbit of your home planet.',
-            image: images.earth
+            image: images.earth,
+            grid: [
+                {
+                    index: 5,
+                    contentType: CellContentTypes.OBJECT,
+                    content: {
+                        objectId: 'the-sun'
+                    }
+                }
+            ]
         },
         {
             _id: 'earth-orbit',

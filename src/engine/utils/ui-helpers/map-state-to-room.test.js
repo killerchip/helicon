@@ -2,8 +2,12 @@ import { _ } from 'underscore';
 import { deviceAState } from '../device-a-state.js';
 import { focusOnRoom } from '../../redux/mutators/focus-on-room.js';
 import { focusOnObject } from '../../redux/mutators/focus-on-object.js';
-import { mapStateToRoom } from './map-state-to-room.js';
+import {
+    mapStateToRoom,
+    mapCellContentToActions
+} from './map-state-to-room.js';
 import { ElemTypes } from '../../elem-types.js';
+import { focusOnRoom as focusOnRoomAction } from '../../redux/actions.js';
 
 describe('MAP STATE TO ROOM UI', () => {
     describe('focused on room', () => {
@@ -14,6 +18,7 @@ describe('MAP STATE TO ROOM UI', () => {
             roomFocusedState.scenario.elements,
             element => element._id === heroLocationId
         );
+
         const roomUI = mapStateToRoom(roomFocusedState);
 
         test('title is room title', () => {
@@ -27,6 +32,14 @@ describe('MAP STATE TO ROOM UI', () => {
         if (focusedRoom.image) {
             test('image is room image', () => {
                 expect(roomUI.image).toEqual(focusedRoom.image);
+            });
+
+            test('optional grid is room grid', () => {
+                if (focusedRoom.grid) {
+                    expect(roomUI.grid).toEqual(focusedRoom.grid);
+                } else {
+                    expect(roomUI.grid).toEqual([]);
+                }
             });
         } else {
             test('image is optionally null', () => {
@@ -60,10 +73,37 @@ describe('MAP STATE TO ROOM UI', () => {
             test('image is room image', () => {
                 expect(roomUI.image).toEqual(focusRoom.image);
             });
+
+            test('optional grid is room grid', () => {
+                if (focusRoom.grid) {
+                    expect(roomUI.grid).toEqual(focusRoom.grid);
+                } else {
+                    expect(roomUI.grid).toEqual([]);
+                }
+            });
         } else {
             test('image is optionally null', () => {
                 expect(roomUI.image).toBeFalsy();
             });
         }
+    });
+
+    describe('mapCellContent to Actions', () => {
+        test('returns an empty with empty elements if no grid is found', () => {
+            expect(mapCellContentToActions()).toEqual([]);
+        });
+        test('returns a Focus-on-room action on grid cells that are undefined', () => {
+            const focusedRoom = { _id: 'a-room', grid: [] };
+            const resultGrid = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(
+                () => ({
+                    action: focusOnRoomAction(focusedRoom._id),
+                    active: false
+                })
+            );
+
+            expect(mapCellContentToActions(focusedRoom)).toEqual(resultGrid);
+        });
+        test('returns a Focus-on-object action on grid cells that have object content', () => {});
+        test('returns the grid cell action on grid cells that have action content', () => {});
     });
 });

@@ -1,5 +1,6 @@
 import SimpleSchema from 'simpl-schema';
 import { ElemTypesValues } from '../elem-types.js';
+import { CellContentTypesValues } from '../cell-content-types';
 
 const HeroSchema = new SimpleSchema({
     locationId: String
@@ -25,6 +26,22 @@ const ObjectSchema = new SimpleSchema({
     description: String
 });
 
+const GridCellSchema = new SimpleSchema({
+    index: {
+        type: Number,
+        min: 0,
+        max: 11
+    },
+    contentType: {
+        type: String,
+        allowedValues: CellContentTypesValues
+    },
+    content: {
+        type: Object,
+        blackbox: true
+    }
+});
+
 export const RoomSchema = new SimpleSchema({
     _id: String,
     title: String,
@@ -33,6 +50,15 @@ export const RoomSchema = new SimpleSchema({
     image: {
         type: Object,
         blackbox: true,
+        optional: true
+    },
+    grid: {
+        type: Array,
+        optional: true
+    },
+    'grid.$': {
+        type: GridCellSchema,
+        maxCount: 12,
         optional: true
     }
 });
