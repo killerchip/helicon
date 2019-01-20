@@ -12,7 +12,9 @@ const IconDetailsSchema = new SimpleSchema({
 });
 
 const IconsSchema = new SimpleSchema({
-    [ToolbarActions.TOGGLE_GRID]: IconDetailsSchema
+    [ToolbarActions.TOGGLE_GRID]: IconDetailsSchema,
+    [ToolbarActions.NARRATION_NEXT]: IconDetailsSchema,
+    [ToolbarActions.NARRATION_PREV]: IconDetailsSchema
 });
 
 export const StyleSchema = new SimpleSchema({

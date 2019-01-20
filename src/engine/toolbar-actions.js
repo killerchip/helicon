@@ -1,3 +1,5 @@
 export const ToolbarActions = {
-    TOGGLE_GRID: 'toggleGrid'
+    TOGGLE_GRID: 'toggleGrid',
+    NARRATION_NEXT: 'narrationNext',
+    NARRATION_PREV: 'narrationPrev'
 };

@@ -2,13 +2,14 @@
 import { ElemTypes } from '../../engine/elem-types.js';
 import { images } from '../images';
 import { CellContentTypes } from '../../engine/cell-content-types.js';
+import { ToolbarActions } from '../../engine/toolbar-actions.js';
 
 export const scenario = {
     hero: {
         locationId: 'towards-earth'
     },
     camera: {
-        roomId: 'towards-earth',
+        roomId: 'intro1',
         objectId: null
     },
     elements: [
@@ -21,7 +22,10 @@ export const scenario = {
             For almost 250 years he has kept the peace amongst the nations of planet Helicon. He was always fair and just to all heliconers and the majority of them held him in high perspective. That does not mean that he was not forced to be 'brutal' against peace-threateners from time to time.
     
             But his worries now rested on his successors. Could they in fact keep the peace and prosperity of his people?
-            `
+            `,
+            actions: {
+                [ToolbarActions.NARRATION_NEXT]: { targetRoomId: 'intro2' }
+            }
         },
         {
             _id: 'intro2',
@@ -32,7 +36,13 @@ export const scenario = {
             You have been away from planet earth on mining operations for the past 10 years. These hard-worked years extracting Lithium operations provided a worthy amount of credits to allow you establish a well-being living back in planet Earth.
     
             You woke up from the last month's hybernation. The system's control panel indicates that the vessel approaches at last planet earth. 
-            `
+            `,
+            actions: {
+                [ToolbarActions.NARRATION_PREV]: { targetRoomId: 'intro1' },
+                [ToolbarActions.NARRATION_NEXT]: {
+                    targetRoomId: 'towards-earth'
+                }
+            }
         },
         {
             _id: 'towards-earth',

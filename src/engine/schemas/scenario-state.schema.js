@@ -1,6 +1,7 @@
 import SimpleSchema from 'simpl-schema';
 import { ElemTypesValues } from '../elem-types.js';
 import { CellContentTypesValues } from '../cell-content-types';
+import { ScenarioActionsSchema } from './scenario-actions-schema.js';
 
 const HeroSchema = new SimpleSchema({
     locationId: String
@@ -23,7 +24,11 @@ const ObjectSchema = new SimpleSchema({
     _id: String,
     elemType: ElemType,
     title: String,
-    description: String
+    description: String,
+    actions: {
+        type: ScenarioActionsSchema,
+        optional: true
+    }
 });
 
 const GridCellSchema = new SimpleSchema({
@@ -59,6 +64,10 @@ export const RoomSchema = new SimpleSchema({
     'grid.$': {
         type: GridCellSchema,
         maxCount: 12,
+        optional: true
+    },
+    actions: {
+        type: ScenarioActionsSchema,
         optional: true
     }
 });

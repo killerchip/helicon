@@ -11,6 +11,14 @@ export const style = {
         [ToolbarActions.TOGGLE_GRID]: {
             enabled: icons.gridEnabled,
             disabled: icons.gridDisabled
+        },
+        [ToolbarActions.NARRATION_NEXT]: {
+            enabled: icons.nextEnabled,
+            disabled: icons.nextDisabled
+        },
+        [ToolbarActions.NARRATION_PREV]: {
+            enabled: icons.prevEnabled,
+            disabled: icons.prevDisabled
         }
     }
 };
