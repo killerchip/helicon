@@ -1,4 +1,4 @@
-package com.helicon;
+package net.killerchip.helicon;
 
 import com.facebook.react.ReactActivity;
 
