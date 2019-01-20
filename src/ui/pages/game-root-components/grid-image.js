@@ -38,6 +38,8 @@ export class GridImage extends React.Component {
     render() {
         const { image, grid } = this.props;
         const { width } = this.state;
+        const shouldRenderGrid = grid.length > 0;
+
         return (
             <View onLayout={this.onLayout}>
                 <ImageBackground
@@ -49,7 +51,7 @@ export class GridImage extends React.Component {
                         flexWrap: 'wrap'
                     }}
                 >
-                    {grid ? this.renderGrid() : null}
+                    {shouldRenderGrid ? this.renderGrid() : undefined}
                 </ImageBackground>
             </View>
         );

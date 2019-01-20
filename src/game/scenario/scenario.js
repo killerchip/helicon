@@ -25,7 +25,8 @@ export const scenario = {
             `,
             actions: {
                 [ToolbarActions.NARRATION_NEXT]: { targetRoomId: 'intro2' }
-            }
+            },
+            image: images.intro1
         },
         {
             _id: 'intro2',
@@ -42,7 +43,8 @@ export const scenario = {
                 [ToolbarActions.NARRATION_NEXT]: {
                     targetRoomId: 'towards-earth'
                 }
-            }
+            },
+            image: images.intro2
         },
         {
             _id: 'towards-earth',
