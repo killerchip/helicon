@@ -7,6 +7,7 @@ import { mapStateToRoom } from '../../engine/utils/ui-helpers/map-state-to-room.
 import { GridImage } from './game-root-components/grid-image.js';
 import { Title } from './game-root-components/title.js';
 import { Description } from './game-root-components/description.js';
+import { ActionsBar } from './game-root-components/actions-bar.js';
 
 const pageStyle = StyleSheet.create({
     page: {
@@ -25,7 +26,8 @@ const pageStyle = StyleSheet.create({
 // eslint-disable-next-line react/prefer-stateless-function
 export class GameRootPageContent extends React.Component {
     render() {
-        const { ui, dispatchAction } = this.props;
+        const { ui, dispatchAction, state } = this.props;
+        const { displayGrid } = state.app.config;
 
         return (
             <ImageBackground
@@ -38,9 +40,13 @@ export class GameRootPageContent extends React.Component {
                             image={ui.image}
                             grid={ui.grid}
                             onGridClick={dispatchAction}
+                            displayGrid={displayGrid}
                         />
                     ) : null}
-
+                    <ActionsBar
+                        actions={ui.actionsBar}
+                        onAction={dispatchAction}
+                    />
                     <Title title={ui.title} />
                     <Description description={ui.description} />
                 </ScrollView>
@@ -50,6 +56,8 @@ export class GameRootPageContent extends React.Component {
 }
 
 GameRootPageContent.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
+    state: PropTypes.object.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     ui: PropTypes.object.isRequired,
     dispatchAction: PropTypes.func.isRequired

@@ -20,7 +20,7 @@ export class GridImage extends React.Component {
 
     renderGrid() {
         const { width } = this.state;
-        const { onGridClick, grid } = this.props;
+        const { onGridClick, grid, displayGrid } = this.props;
         return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(index => (
             <GridCell
                 key={index}
@@ -29,7 +29,8 @@ export class GridImage extends React.Component {
                 height={width * (3 / 4)}
                 callbackData={grid[index].action}
                 onPress={onGridClick}
-                active={grid[index].active} // dummy one
+                active={grid[index].active}
+                displayGrid={displayGrid}
             />
         ));
     }
@@ -60,10 +61,12 @@ GridImage.propTypes = {
     image: PropTypes.number.isRequired, // for some stupid reason RN image is seen as number from PropTypes module
     // eslint-disable-next-line react/forbid-prop-types
     grid: PropTypes.array,
-    onGridClick: PropTypes.func
+    onGridClick: PropTypes.func,
+    displayGrid: PropTypes.bool
 };
 
 GridImage.defaultProps = {
     grid: undefined,
-    onGridClick: undefined
+    onGridClick: undefined,
+    displayGrid: false
 };

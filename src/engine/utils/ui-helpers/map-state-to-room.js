@@ -1,6 +1,7 @@
 import { _ } from 'underscore';
 import { focusOnRoom, focusOnObject } from '../../redux/actions.js';
 import { CellContentTypes } from '../../cell-content-types.js';
+import { mapStateToActionsBar } from './map-state-to-actions-bar.js';
 
 export const mapCellContentToActions = (focusedRoom = {}) => {
     const grid = focusedRoom && focusedRoom.grid;
@@ -52,7 +53,7 @@ export const mapStateToRoom = state => {
             (focusedObject && focusedObject.description) ||
             focusedRoom.description,
         image: focusedRoom.image,
-        grid: mapCellContentToActions(focusedRoom)
-        // grid: focusedRoom.grid
+        grid: mapCellContentToActions(focusedRoom),
+        actionsBar: mapStateToActionsBar(state)
     };
 };

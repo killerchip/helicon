@@ -16,12 +16,17 @@ export class GridCell extends React.Component {
     }
 
     getGridStyle() {
-        const { width, height, active } = this.props;
+        const { width, height, active, displayGrid } = this.props;
+        const displayedGridStyle = {
+            borderWidth: 1,
+            borderColor: active ? 'blue' : 'rgba(100,100,100,0.5)'
+        };
+        const gridStyle = displayGrid ? displayedGridStyle : {};
+
         return {
             width: width / 4,
             height: height / 3,
-            borderWidth: 1,
-            borderColor: active ? 'blue' : 'rgba(100,100,100,0.5)'
+            ...gridStyle
         };
     }
 
@@ -40,9 +45,11 @@ GridCell.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     callbackData: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
-    active: PropTypes.bool
+    active: PropTypes.bool,
+    displayGrid: PropTypes.bool
 };
 
 GridCell.defaultProps = {
-    active: false
+    active: false,
+    displayGrid: false
 };

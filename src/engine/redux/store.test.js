@@ -6,7 +6,13 @@ import { initialState } from './initial-state.js';
 import { scenario } from '../../game/scenario/scenario.js';
 import { StateSchema } from '../schemas/state.schema.js';
 import { ElemTypes } from '../elem-types.js';
-import { startGame, focusOnObject, focusOnRoom, moveHero } from './actions.js';
+import {
+    startGame,
+    focusOnObject,
+    focusOnRoom,
+    moveHero,
+    toggleGrid
+} from './actions.js';
 
 describe('REDUCER', () => {
     test('it should return initial state in case of no state passed as parameter', () => {
@@ -148,6 +154,24 @@ describe('REDUCER', () => {
             test('should not break State schema', () => {
                 expect(StateSchema.validate(newState)).toBeUndefined();
             });
+        });
+    });
+
+    describe('TOGGLE_GRID action', () => {
+        const aState = deviceAState();
+        const nextState = oneReducer(aState, toggleGrid());
+        const next2State = oneReducer(nextState, toggleGrid());
+
+        test('toggles grid display', () => {
+            expect(nextState.app.config.displayGrid).not.toBe(
+                aState.app.config.displayGrid
+            );
+        });
+
+        test('toggles grid display again', () => {
+            expect(next2State.app.config.displayGrid).not.toBe(
+                nextState.app.config.displayGrid
+            );
         });
     });
 });

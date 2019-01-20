@@ -6,6 +6,7 @@ import { startGame } from './mutators/start-game.js';
 import { focusOnObject } from './mutators/focus-on-object.js';
 import { focusOnRoom } from './mutators/focus-on-room.js';
 import { moveHero } from './mutators/move-hero.js';
+import { toggleGrid } from './mutators/toggle-grid.js';
 
 export const oneReducer = (state, action) => {
     const newState = deepClone(state || initialState);
@@ -16,6 +17,10 @@ export const oneReducer = (state, action) => {
 
     /* eslint-disable indent */
     switch (action.type) {
+        case actionTypes.TOGGLE_GRID: {
+            return toggleGrid(newState);
+        }
+
         case actionTypes.START_GAME: {
             return startGame(newState, action.scenario);
         }

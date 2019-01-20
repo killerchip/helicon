@@ -1,5 +1,9 @@
 import { actionTypes } from './action-types.js';
 
+export const toggleGrid = () => ({
+    type: actionTypes.TOGGLE_GRID
+});
+
 export const startGame = scenario => ({
     type: actionTypes.START_GAME,
     scenario
