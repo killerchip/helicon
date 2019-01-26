@@ -14,7 +14,8 @@ const IconDetailsSchema = new SimpleSchema({
 const IconsSchema = new SimpleSchema({
     [ToolbarActions.TOGGLE_GRID]: IconDetailsSchema,
     [ToolbarActions.NARRATION_NEXT]: IconDetailsSchema,
-    [ToolbarActions.NARRATION_PREV]: IconDetailsSchema
+    [ToolbarActions.NARRATION_PREV]: IconDetailsSchema,
+    [ToolbarActions.ROOM_EXIT]: IconDetailsSchema
 });
 
 export const StyleSchema = new SimpleSchema({

@@ -19,6 +19,10 @@ export const style = {
         [ToolbarActions.NARRATION_PREV]: {
             enabled: icons.prevEnabled,
             disabled: icons.prevDisabled
+        },
+        [ToolbarActions.ROOM_EXIT]: {
+            enabled: icons.exitEnabled,
+            disabled: icons.exitDisabled
         }
     }
 };

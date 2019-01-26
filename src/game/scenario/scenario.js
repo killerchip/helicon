@@ -60,6 +60,13 @@ export const scenario = {
                     content: {
                         objectId: 'the-sun'
                     }
+                },
+                {
+                    index: 6,
+                    contentType: CellContentTypes.OBJECT,
+                    content: {
+                        objectId: 'exit-earth-orbit-control'
+                    }
                 }
             ]
         },
@@ -67,14 +74,32 @@ export const scenario = {
             _id: 'earth-orbit',
             title: 'In Orbit Around Eearth',
             elemType: ElemTypes.ROOM,
-            description: 'Your shuttle is now in orbit around planet Earth...'
+            description: `Your shuttle is now in orbit around planet Earth...
+
+            The crystal blue atmosphere of your home planet welcomes you back. Its color always rise happy memories of you childhood, around the family cottage besides the lake.
+
+            You cannot wait for the moment that you get clearance to enter atmosphere. But for the time being, you don't see the approval to have reached your shuttle's communication inbox.
+            `,
+            image: images.earthOrbit,
+            grid: [
+                {
+                    index: 3,
+                    contentType: CellContentTypes.OBJECT,
+                    content: {
+                        objectId: 'away-from-earth-orbit-control'
+                    }
+                }
+            ]
         },
         {
             _id: 'exit-earth-orbit-control',
             title: 'Orbit Control (Earth)',
             elemType: ElemTypes.OBJECT,
             description:
-                'The "orbit control" will allow you to descend in orbit around Earth.'
+                'The "orbit control" will allow you to descend in orbit around Earth. (tap exit icon to active it).',
+            actions: {
+                [ToolbarActions.ROOM_EXIT]: { targetRoomId: 'earth-orbit' }
+            }
         },
         {
             _id: 'the-sun',
@@ -83,6 +108,16 @@ export const scenario = {
             description: `It is the central star of the solar system. A life-giving yellow dwarf star mainly composed of Hydrogen and Helium.
                 
             It is very hot and radio-active, so your vessel's AI will refuse to set route towards it. Your vessel was not designed for sun-surfing courses.`
+        },
+        {
+            _id: 'away-from-earth-orbit-control',
+            title: 'Out of Orbit control',
+            elemType: ElemTypes.OBJECT,
+            description:
+                'The "out-of-orbit control" will elevate your shuttle out of Earth-orbit, and in position to leave the around Earth area. (tap exit icon to active it).',
+            actions: {
+                [ToolbarActions.ROOM_EXIT]: { targetRoomId: 'towards-earth' }
+            }
         }
     ]
 };

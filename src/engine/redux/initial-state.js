@@ -4,7 +4,7 @@ export const initialState = {
     app: {
         gameStarted: false,
         config: {
-            displayGrid: true
+            displayGrid: false
         }
     },
     scenario
