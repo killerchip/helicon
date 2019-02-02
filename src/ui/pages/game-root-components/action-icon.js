@@ -35,7 +35,7 @@ ActionIcon.propTypes = {
     imageDisabled: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    callbackData: PropTypes.object
+    callbackData: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 
 ActionIcon.defaultProps = {

@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import { ElemTypes } from '../../engine/elem-types.js';
 import { images } from '../images';
-import { CellContentTypes } from '../../engine/cell-content-types.js';
 import { ToolbarActions } from '../../engine/toolbar-actions.js';
+import { actionTypes } from '../../engine/redux/action-types.js';
 
 export const scenario = {
     hero: {
@@ -50,21 +50,22 @@ export const scenario = {
             _id: 'towards-earth',
             title: 'Towards earth',
             elemType: ElemTypes.ROOM,
-            description:
-                'You are in the control room of your space shuttle. Ahead of you can see planet earth welcoming you back home. Just a tap on the navigation screen, and you can set the shuttle in orbit of your home planet.',
+            description: `You are in the control room of your space shuttle. You are staring at the main navigation screen. 
+                
+            Ahead of you can see planet earth welcoming you back home. Just a tap on the navigation screen, and you can set the shuttle in orbit of your home planet.`,
             image: images.earth,
             grid: [
                 {
                     index: 5,
-                    contentType: CellContentTypes.OBJECT,
                     content: {
+                        type: actionTypes.FOCUS_ON_OBJECT,
                         objectId: 'the-sun'
                     }
                 },
                 {
                     index: 6,
-                    contentType: CellContentTypes.OBJECT,
                     content: {
+                        type: actionTypes.FOCUS_ON_OBJECT,
                         objectId: 'exit-earth-orbit-control'
                     }
                 }
@@ -74,7 +75,7 @@ export const scenario = {
             _id: 'earth-orbit',
             title: 'In Orbit Around Eearth',
             elemType: ElemTypes.ROOM,
-            description: `Your shuttle is now in orbit around planet Earth...
+            description: `You are staring at the main navigation screen. You can see that your shuttle is now in orbit around planet Earth...
 
             The crystal blue atmosphere of your home planet welcomes you back. Its color always rise happy memories of you childhood, around the family cottage besides the lake.
 
@@ -84,19 +85,16 @@ export const scenario = {
             grid: [
                 {
                     index: 3,
-                    contentType: CellContentTypes.OBJECT,
                     content: {
+                        type: actionTypes.FOCUS_ON_OBJECT,
                         objectId: 'away-from-earth-orbit-control'
                     }
                 },
                 {
                     index: 8,
-                    contentType: CellContentTypes.ACTION,
                     content: {
-                        action: ToolbarActions.ROOM_EXIT,
-                        payload: {
-                            targetRoomId: 'control-room'
-                        }
+                        type: actionTypes.MOVE_HERO,
+                        roomId: 'control-room'
                     }
                 }
             ]
@@ -141,33 +139,10 @@ export const scenario = {
             image: images.spaceshipCoptit,
             grid: [
                 {
-                    index: 5,
-                    contentType: CellContentTypes.ACTION,
+                    index: [5, 6, 7],
                     content: {
-                        action: ToolbarActions.ROOM_EXIT,
-                        payload: {
-                            targetRoomId: 'earth-orbit'
-                        }
-                    }
-                },
-                {
-                    index: 6,
-                    contentType: CellContentTypes.ACTION,
-                    content: {
-                        action: ToolbarActions.ROOM_EXIT,
-                        payload: {
-                            targetRoomId: 'earth-orbit'
-                        }
-                    }
-                },
-                {
-                    index: 7,
-                    contentType: CellContentTypes.ACTION,
-                    content: {
-                        action: ToolbarActions.ROOM_EXIT,
-                        payload: {
-                            targetRoomId: 'earth-orbit'
-                        }
+                        type: actionTypes.MOVE_HERO,
+                        roomId: 'earth-orbit'
                     }
                 }
             ]

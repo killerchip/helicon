@@ -43,7 +43,8 @@ GridCell.propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    callbackData: PropTypes.object.isRequired,
+    callbackData: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+        .isRequired,
     onPress: PropTypes.func.isRequired,
     active: PropTypes.bool,
     displayGrid: PropTypes.bool

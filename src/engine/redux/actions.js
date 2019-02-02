@@ -19,8 +19,17 @@ export const focusOnRoom = roomId => ({
     roomId
 });
 
-export const moveHero = (roomId, withCamera) => ({
+export const moveHero = (roomId, withCamera = true) => ({
     type: actionTypes.MOVE_HERO,
     roomId,
     withCamera
 });
+
+export const actionCreators = {
+    [actionTypes.TOGGLE_GRID]: () => toggleGrid(),
+    [actionTypes.START_GAME]: scenario => startGame(scenario),
+    [actionTypes.FOCUS_ON_OBJECT]: objectId => focusOnObject(objectId),
+    [actionTypes.FOCUS_ON_ROOM]: roomId => focusOnRoom(roomId),
+    [actionTypes.MOVE_HERO]: (roomId, withCamera) =>
+        moveHero(roomId, withCamera)
+};

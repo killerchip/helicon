@@ -69,7 +69,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    dispatchAction: action => dispatch(action)
+    dispatchAction: action => {
+        const actions = Array.isArray(action) ? action : [action];
+        actions.forEach(actionItem => dispatch(actionItem));
+    }
 });
 
 export const GameRootPage = connect(

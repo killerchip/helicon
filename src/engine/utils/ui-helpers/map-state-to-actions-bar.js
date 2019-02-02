@@ -1,6 +1,7 @@
 import { ToolbarActions } from '../../toolbar-actions.js';
+import { actionTypes } from '../../redux/action-types.js';
 import { style } from '../../../game/style/style.js';
-import { toggleGrid, focusOnRoom, moveHero } from '../../redux/actions.js';
+import { actionCreators } from '../../redux/actions.js';
 import { getFocusedRoom, getFocusedElement } from './get-focused.js';
 
 const getGridIconData = state => {
@@ -11,7 +12,7 @@ const getGridIconData = state => {
         imageEnabled: style.icons[ToolbarActions.TOGGLE_GRID].enabled,
         imageDisabled: style.icons[ToolbarActions.TOGGLE_GRID].disabled,
         enabled: shouldEnableGridAction,
-        callbackData: { ...toggleGrid() }
+        callbackData: { ...actionCreators[actionTypes.TOGGLE_GRID]() }
     };
 };
 const getPrevIconData = state => {
@@ -28,7 +29,7 @@ const getPrevIconData = state => {
         // prettier-ignore
         callbackData: shouldBeEnabled
             ? {
-                ...focusOnRoom(
+                ...actionCreators[actionTypes.FOCUS_ON_ROOM](
                     focusedElement.actions[ToolbarActions.NARRATION_PREV]
                         .targetRoomId
                 )
@@ -51,7 +52,7 @@ const getNextIconData = state => {
         // prettier-ignore
         callbackData: shouldBeEnabled
             ? {
-                ...focusOnRoom(
+                ...actionCreators[actionTypes.FOCUS_ON_ROOM](
                     focusedElement.actions[ToolbarActions.NARRATION_NEXT]
                         .targetRoomId
                 )
@@ -74,7 +75,7 @@ const getExitIconData = state => {
         // prettier-ignore
         callbackData: shouldBeEnabled
             ? {
-                ...moveHero(
+                ...actionCreators[actionTypes.MOVE_HERO](
                     focusedElement.actions[ToolbarActions.ROOM_EXIT]
                         .targetRoomId
                 )

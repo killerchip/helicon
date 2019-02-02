@@ -1,8 +1,6 @@
 import { _ } from 'underscore';
-import { focusOnRoom, focusOnObject } from '../../redux/actions.js';
-import { CellContentTypes } from '../../cell-content-types.js';
+import { focusOnRoom } from '../../redux/actions.js';
 import { mapStateToActionsBar } from './map-state-to-actions-bar.js';
-import { mapGridActionToReduxAction } from './map-grid-action-to-redux-action.js';
 
 export const mapCellContentToActions = (focusedRoom = {}) => {
     const grid = focusedRoom && focusedRoom.grid;
@@ -18,26 +16,16 @@ export const mapCellContentToActions = (focusedRoom = {}) => {
     }));
 
     grid.forEach(gridItem => {
-        /* eslint-disable indent */
-        switch (gridItem.contentType) {
-            case CellContentTypes.OBJECT:
-                gridArray[gridItem.index] = {
-                    action: focusOnObject(gridItem.content.objectId),
-                    active: true
-                };
-                break;
+        const indexes = Array.isArray(gridItem.index)
+            ? gridItem.index
+            : [gridItem.index];
 
-            case CellContentTypes.ACTION:
-                gridArray[gridItem.index] = {
-                    action: mapGridActionToReduxAction(gridItem.content),
-                    active: true
-                };
-                break;
-
-            default:
-                break;
-        }
-        /* eslint-enable indent */
+        indexes.forEach(index => {
+            gridArray[index] = {
+                action: gridItem.content,
+                active: true
+            };
+        });
     });
 
     return gridArray;
