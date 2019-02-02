@@ -88,6 +88,16 @@ export const scenario = {
                     content: {
                         objectId: 'away-from-earth-orbit-control'
                     }
+                },
+                {
+                    index: 8,
+                    contentType: CellContentTypes.ACTION,
+                    content: {
+                        action: ToolbarActions.ROOM_EXIT,
+                        payload: {
+                            targetRoomId: 'control-room'
+                        }
+                    }
                 }
             ]
         },
@@ -118,6 +128,49 @@ export const scenario = {
             actions: {
                 [ToolbarActions.ROOM_EXIT]: { targetRoomId: 'towards-earth' }
             }
+        },
+        {
+            _id: 'control-room',
+            title: 'Spaceship Control Room',
+            elemType: ElemTypes.ROOM,
+            // eslint-disable-next-line quotes
+            description: `This is your spaceship's control room.
+
+            In front of you there is the main control console. Above it the navigations panels allow you to set routes and jump-targets. Well actually the majority of the work is done by the ship's Artifical Intelligence (AI).
+            `,
+            image: images.spaceshipCoptit,
+            grid: [
+                {
+                    index: 5,
+                    contentType: CellContentTypes.ACTION,
+                    content: {
+                        action: ToolbarActions.ROOM_EXIT,
+                        payload: {
+                            targetRoomId: 'earth-orbit'
+                        }
+                    }
+                },
+                {
+                    index: 6,
+                    contentType: CellContentTypes.ACTION,
+                    content: {
+                        action: ToolbarActions.ROOM_EXIT,
+                        payload: {
+                            targetRoomId: 'earth-orbit'
+                        }
+                    }
+                },
+                {
+                    index: 7,
+                    contentType: CellContentTypes.ACTION,
+                    content: {
+                        action: ToolbarActions.ROOM_EXIT,
+                        payload: {
+                            targetRoomId: 'earth-orbit'
+                        }
+                    }
+                }
+            ]
         }
     ]
 };
