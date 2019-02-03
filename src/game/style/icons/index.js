@@ -8,5 +8,7 @@ export const icons = {
     prevEnabled: require('./prev-enabled.png'),
     prevDisabled: require('./prev-disabled.png'),
     exitEnabled: require('./exit-enabled.png'),
-    exitDisabled: require('./exit-disabled.png')
+    exitDisabled: require('./exit-disabled.png'),
+    viewEnabled: require('./view-enabled.png'),
+    viewDisabled: require('./view-disabled.png')
 };

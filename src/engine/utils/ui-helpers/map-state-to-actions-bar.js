@@ -15,6 +15,7 @@ const getGridIconData = state => {
         callbackData: { ...actionCreators[actionTypes.TOGGLE_GRID]() }
     };
 };
+
 const getPrevIconData = state => {
     const focusedElement = getFocusedElement(state).element;
     const shouldBeEnabled = !!(
@@ -61,6 +62,28 @@ const getNextIconData = state => {
     };
 };
 
+const getViewIconData = state => {
+    const focusedElement = getFocusedElement(state).element;
+    const shouldBeEnabled = !!(
+        focusedElement.actions && focusedElement.actions[ToolbarActions.VIEW]
+    );
+
+    return {
+        imageEnabled: style.icons[ToolbarActions.VIEW].enabled,
+        imageDisabled: style.icons[ToolbarActions.VIEW].disabled,
+        enabled: shouldBeEnabled,
+        // prettier-ignore
+        callbackData: shouldBeEnabled 
+            ? {
+                ...actionCreators[actionTypes.FOCUS_ON_ROOM](
+                    focusedElement.actions[ToolbarActions.VIEW]
+                        .targetRoomId
+                )
+            }
+            : undefined
+    };
+};
+
 const getExitIconData = state => {
     const focusedElement = getFocusedElement(state).element;
     const shouldBeEnabled = !!(
@@ -87,6 +110,7 @@ const getExitIconData = state => {
 export const mapStateToActionsBar = state => [
     getPrevIconData(state),
     getNextIconData(state),
+    getViewIconData(state),
     getExitIconData(state),
     getGridIconData(state)
 ];

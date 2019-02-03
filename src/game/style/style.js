@@ -23,6 +23,10 @@ export const style = {
         [ToolbarActions.ROOM_EXIT]: {
             enabled: icons.exitEnabled,
             disabled: icons.exitDisabled
+        },
+        [ToolbarActions.VIEW]: {
+            enabled: icons.viewEnabled,
+            disabled: icons.viewDisabled
         }
     }
 };

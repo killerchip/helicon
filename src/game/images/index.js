@@ -6,5 +6,6 @@ export const images = {
     intro2: require('./intro2.jpg'),
     earth: require('./earth.jpg'),
     earthOrbit: require('./earth-orbit.jpg'),
-    spaceshipCoptit: require('./spaceship-coptit.jpg')
+    spaceshipCoptit: require('./spaceship-coptit.jpg'),
+    earthViewFromWindow: require('./earth-view-from-window.jpg')
 };

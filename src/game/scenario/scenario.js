@@ -139,10 +139,45 @@ export const scenario = {
             image: images.spaceshipCoptit,
             grid: [
                 {
+                    index: 4,
+                    content: {
+                        type: actionTypes.FOCUS_ON_OBJECT,
+                        objectId: 'control-room-window'
+                    }
+                },
+                {
                     index: [5, 6, 7],
                     content: {
                         type: actionTypes.MOVE_HERO,
                         roomId: 'earth-orbit'
+                    }
+                }
+            ]
+        },
+        {
+            _id: 'control-room-window',
+            title: 'Control Room Window',
+            elemType: ElemTypes.OBJECT,
+            description:
+                'This is the one of the two control windows. It allows you to have a wide area view outside your spaceship',
+            actions: {
+                [ToolbarActions.VIEW]: { targetRoomId: 'earth-view-above' }
+            }
+        },
+        {
+            _id: 'earth-view-above',
+            title: 'Eearth View from above',
+            elemType: ElemTypes.ROOM,
+            description:
+                // eslint-disable-next-line prettier/prettier
+                'The view of Earth\'s surface from this point is really rewarding.',
+            image: images.earthViewFromWindow,
+            grid: [
+                {
+                    index: 8,
+                    content: {
+                        type: actionTypes.FOCUS_ON_ROOM,
+                        roomId: 'control-room'
                     }
                 }
             ]

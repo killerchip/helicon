@@ -27,7 +27,8 @@ const ToolbarActionsShape = {
     [ToolbarActions.NARRATION_NEXT]: PropTypes.shape(
         RoomTargetingPayloadSchema
     ),
-    [ToolbarActions.ROOM_EXIT]: PropTypes.shape(RoomTargetingPayloadSchema)
+    [ToolbarActions.ROOM_EXIT]: PropTypes.shape(RoomTargetingPayloadSchema),
+    [ToolbarActions.VIEW]: PropTypes.shape(RoomTargetingPayloadSchema)
 };
 
 const ToogleGridActionShape = PropTypes.shape({

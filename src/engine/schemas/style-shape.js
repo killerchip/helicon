@@ -16,7 +16,8 @@ const IconsShape = {
         .isRequired,
     [ToolbarActions.NARRATION_PREV]: PropTypes.shape(IconDetailsShape)
         .isRequired,
-    [ToolbarActions.ROOM_EXIT]: PropTypes.shape(IconDetailsShape).isRequired
+    [ToolbarActions.ROOM_EXIT]: PropTypes.shape(IconDetailsShape).isRequired,
+    [ToolbarActions.VIEW]: PropTypes.shape(IconDetailsShape).isRequired
 };
 
 export const StyleShape = {
