@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        color: 'white'
+        color: 'blue'
     },
     instructions: {
         textAlign: 'center',
-        color: 'white',
+        color: 'blue',
         marginBottom: 5
     }
 });
@@ -64,7 +64,7 @@ class HomePageContent extends React.Component {
                         <Button
                             onPress={this.onContinueGame}
                             title="Continue"
-                            color="rgba(0,0,0,0)"
+                            color="rgba(0,0,255,0)"
                         />
                     ) : null}
                 </View>
