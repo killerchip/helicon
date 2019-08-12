@@ -1,3 +1,3 @@
-rootProject.name = 'Helicon'
+rootProject.name = 'net.killerchip.helicon'
 
 include ':app'
