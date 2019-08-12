@@ -10,8 +10,8 @@
     "pretty:write": "node_modules/.bin/prettier --write './**/*.{js,jsx,scss}'"
   },
   "dependencies": {
-    "react": "16.6.3",
-    "react-native": "0.57.8",
+    "react": "16.8.6",
+    "react-native": "0.60.4",
     "react-navigation": "2.18.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
